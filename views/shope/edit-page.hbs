@@ -1,0 +1,75 @@
+<div>
+    <div class="container-fluid">
+
+
+        <div class="row">
+
+            <div class="col-md-12 mt-5">
+                <div style="text-align: center;">
+                    <h1 class="mt-5" style="text-align: center;">Edit Your Product Information</h1>
+                </div>
+                <form action="/shope/upedit?id={{product._id}}" method="post" enctype="multipart/form-data" class="mt-1 p-4">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Products Name</label>
+                        <input type="text" name="pname" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" value="{{product.proinfo.pname}}">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Select Products Type : </label>
+                        <select name="ptype">
+                            <option value="tv">TV</option>
+                            <option value="wm">Washing Machine</option>
+                            <option value="ref">Refrigerator</option>
+                            <option value="mo">Microwave Oven</option>
+                            <option value="ac">Air Conditioner</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Select Products Brand : </label>
+                        <select name="pbrand">
+                            <option value="lg">LG</option>
+                            <option value="gd">Godrej</option>
+                            <option value="wp">Whirlpool</option>
+                            <option value="sa">Samsung</option>
+                            <option value="ifb">IFB</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Products Model Number</label>
+                        <input type="text" name="mnumber" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" value="{{product.proinfo.mnumber}}">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Products Warranty</label>
+                        <select name="wyear">
+                            <option value="">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Products Price</label>
+                        <input type="number" name="pprice" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" placeholder="{{product.proinfo.pprice}}">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Products Image</label>
+                        <input type="file" name="pimage" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" placeholder="Image">
+
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mt-3" style="width: 100%;">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

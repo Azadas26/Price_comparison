@@ -4,6 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('express-handlebars')
+var db = require('./connection/connect')
+var fileUpload = require('express-fileupload')
+var session = require('express-session')
+
 
 var adminRouter = require('./routes/admin');
 var shopeRouter = require('./routes/shope');
@@ -14,15 +18,25 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+app.engine('hbs', hbs.engine({ extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/', partialsDir: __dirname + '/views/partials/' }))
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(fileUpload())
+app.use(session({secret:"key",cookie:{maxAge:600000}}))
 
+db.connect_db().then((data)=>
+{
+   console.log(data)
+})
+.catch((err)=>
+{
+  console.log(err)
+})
 
-app.engine('hbs', hbs.engine({ extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/', partialsDir: __dirname + '/views/partials/' }))
 
 app.use('/admin', adminRouter);
 app.use('/shope', shopeRouter);

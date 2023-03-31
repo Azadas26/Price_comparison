@@ -1,0 +1,71 @@
+<div>
+    <div class="container-fluid">
+        <div class="row pt-5">
+            <div class="col-md-6 mt-5">
+                <a href="/shope/intro" class="btn btn-outline-primary text-dark"
+                    style="width: 100%; border-radius: 20px;"><b>
+                        Add Your
+                        Products
+                    </b></a>
+            </div>
+            <div class="col-md-6 mt-5">
+                <a href="/shope/listpro" class="btn btn-outline-warning text-dark"
+                    style="width: 100%; border-radius: 20px;"><b>
+                        List Your
+                        Products
+                    </b></a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-5">
+                {{#if products}}
+                <table class="table mt-5">
+                    <h1 class="text-center mt-3"><b>Your Product Information...</b></h1>
+                    <thead>
+                        <tr>
+                            <th scope="col">NO.</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Product Type</th>
+                            <th scope="col">Product Brand</th>
+                            <th scope="col">Model Number</th>
+                            <th scope="col">Waranty(Year)</th>
+                            <th scope="col">Product Price</th>
+                            <th scope="col">Product Image</th>
+                            <th scope="col">choose</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        {{#each products}}
+                        <tr>
+
+                            <td>{{@index}}</td>
+                            <td>{{this.proinfo.pname}}</td>
+                            <td>{{this.proinfo.ptype}}</td>
+                            <td>{{this.proinfo.pbrand}}</td>
+                            <td>{{this.proinfo.mnumber}}</td>
+                            <td>{{this.proinfo.wyear}}</td>
+                            <td>{{this.proinfo.pprice}}</td>
+                            <td><img src="/shope-image/{{this._id}}.png" alt="" style="width: 200px; height: 200px;">
+                            </td>
+                            <td>
+                                <a href="/shope/editpro?id={{this._id}}" class="btn btn-primary mt-5">Edit Products</a>
+                                <a href="/shope/deletepro?id={{this._id}}" class="btn btn-danger mt-5"
+                                    onclick="return confirm('Are you sure to delete this products {{this.porinfo.pname}}')">Delete
+                                    Products</a>
+                            </td>
+
+                        </tr>
+                        {{/each}}
+
+                    </tbody>
+                </table>
+                {{else}}
+                <div class="pt-5">
+                    <h1 class="text-center text-danger mt-5"><b><i>Nothing You Entered...</i></b></h1>
+                </div>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

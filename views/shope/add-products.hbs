@@ -1,0 +1,87 @@
+<div>
+    <div class="container-fluid">
+        <div class="row pt-5">
+            <div class="col-md-6 mt-5">
+                <a href="/shope/intro" class="btn btn-outline-primary text-dark"
+                    style="width: 100%; border-radius: 20px;"><b>
+                        Add Your
+                        Products
+                    </b></a>
+            </div>
+            <div class="col-md-6 mt-5">
+                <a href="/shope/listpro" class="btn btn-outline-warning text-dark"
+                    style="width: 100%; border-radius: 20px;"><b>
+                        List Your
+                        Products
+                    </b></a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 p-5">
+                <h1 class="text-center mt-3"><b>Enter Your Product Information...</b></h1>
+                <form action="/shope/add" method="post" enctype="multipart/form-data" class="mt-2">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Products Name</label>
+                        <input type="text" name="pname" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" placeholder="Samsung TV">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Select Products Type : </label>
+                        <select name="ptype">
+                            <option value="tv">TV</option>
+                            <option value="wm">Washing Machine</option>
+                            <option value="ref">Refrigerator</option>
+                            <option value="mo">Microwave Oven</option>
+                            <option value="ac">Air Conditioner</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Select Products Brand : </label>
+                        <select name="pbrand">
+                            <option value="lg">LG</option>
+                            <option value="gd">Godrej</option>
+                            <option value="wp">Whirlpool</option>
+                            <option value="sa">Samsung</option>
+                            <option value="ifb">IFB</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Products Model Number</label>
+                        <input type="text" name="mnumber" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" placeholder="MDF-54E">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Products Warranty</label>
+                        <select name="wyear">
+                            <option value="">0</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Products Price</label>
+                        <input type="number" name="pprice" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" placeholder="Price ₹">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Products Image</label>
+                        <input type="file" name="pimage" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" placeholder="Image">
+
+                    </div>
+
+                    <button type="submit" class="btn btn-success mt-3" style="width: 100%;">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
