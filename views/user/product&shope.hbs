@@ -1,0 +1,39 @@
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 ">
+                <div class="mt-5 p-5">
+                    <img class="img-fluid" src="/shope-image/{{proInfo.pro._id}}.png" style="width: 100%; height: 50em;"
+                        alt="">
+                </div>
+            </div>
+            <div class="col-md-6 mt-5">
+                <div class="mt-5 p-5">
+                    <h1 class="text-center" style="text-shadow: 2px 2px #FF0000;">
+                        <b><i>{{proInfo.pro.proinfo.pname}}</i></b>
+                    </h1>
+                    <h3 class="mt-5"><b>Product Type &emsp;: &emsp;{{proInfo.pro.proinfo.ptype}}</b></h3>
+                    <h3 class="mt-5"><b>Product Brand &emsp;: &emsp;{{proInfo.pro.proinfo.pbrand}}</b></h3>
+                    <h3 class="mt-5"><b>Product ModelNumber &emsp;: &emsp;{{proInfo.pro.proinfo.mnumber}}</b></h3>
+                    <h3 class="mt-5"><b>Product waranty &emsp;: &emsp;{{proInfo.pro.proinfo.wyear}}&emsp;(year)</b></h3>
+                    <h3 class="mt-5"><b>Product Price &emsp;: &emsp;{{proInfo.pro.proinfo.pprice}}/-</b></h3>
+
+                    <div class="mt-5 text-center">
+                        <div class="bg-secondary text-white p-5" style="width: 90%; border-radius: 20px;">
+                            <h2 class=""><b><i>SHOPE DETAILS...</i></b></h2>
+                            <h3 class="pt-4"><b>Shope Name &emsp;: &emsp;{{proInfo.shope.sname}}</b></h3>
+                            <h3 class="pt-4"><b>Shope Location &emsp;: &emsp;{{proInfo.shope.slocation}}</b></h3>
+                            <h3 class="pt-4"><b>Shope Email Address &emsp;: &emsp;<a class="text-info"
+                                        href="https://mail.google.com/mail/u/0/#sent{{proInfo.shope.semail}}">{{proInfo.shope.semail}}</a></b>
+                            </h3>
+                        </div>
+                    </div>
+                    {{!-- <a href="/cart?id={{proInfo.pro._id}}" class="btn btn-outline-warning mt-3 text-dark"
+                        style="width: 100%;">Add To Cart</a> --}}
+                    <b onclick="cartpro('{{proInfo.pro._id}}')" class="btn btn-outline-warning mt-3 text-dark"
+                        style="width: 100%;">Add To Cart</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 mt-5">
+                <div class="pt-5">
+                    <h1 class="text-center text-info"><b><i>Your Carted Products Are...</i></b></h1>
+                    <table class="table m-5">
+                        <thead>
+                            <tr>
+                                <th scope="col">NO.</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Product Type</th>
+                                <th scope="col">Brand</th>
+                                <th scope="col">Model Number</th>
+                                <th scope="col">Waranty(Year)</th>
+                                <th scope="col">₹ Product Price</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Choose Option</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each pro}}
+                            <tr>
+
+                                <td>{{@index}}</td>
+                                <td>{{this.proinfo.pname}}</td>
+                                <td>{{this.proinfo.ptype}}</td>
+                                <td>{{this.proinfo.pbrand}}</td>
+                                <td>{{this.proinfo.mnumber}}</td>
+                                <td>{{this.proinfo.wyear}}</td>
+                                <td>{{this.proinfo.pprice}}</td>
+                                <td><img src="/shope-image/{{this._id}}.png" style="width: 200px;" height="200px"
+                                        alt=""></td>
+                                <td>
+                                    <a href="/removepro?id={{this._id}}" onclick="return confirm('Are You sure to delete This Product from your cart???')" class="btn btn-danger mt-5">Remove</a>
+                                    <a href="/buy" class="btn btn-success mt-5">Buy Now</a>
+                                </td>
+                            </tr>
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

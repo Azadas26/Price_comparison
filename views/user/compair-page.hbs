@@ -1,0 +1,62 @@
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 mt-5 p-5">
+                <div class="mt-5 p-5">
+                    <form action="/compair" method="post">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Product Name</label>
+                            <input type="text" name="pname" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" placeholder="Enter Product Name">
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                                else.</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Select Products Type : </label>
+                            <select name="ptype" style="width: 100%;">
+                                <option value="tv">TV</option>
+                                <option value="wm">Washing Machine</option>
+                                <option value="ref">Refrigerator</option>
+                                <option value="mo">Microwave Oven</option>
+                                <option value="ac">Air Conditioner</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Model Number</label>
+                            <input type="text" name="mnumber" class="form-control" id="exampleInputPassword1"
+                                placeholder="Eg : IFB-123-FI">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        {{#if pro}}
+        <div class="row">
+            {{#each pro}}
+            <div class="col-md-3 p-5">
+
+                <a href="/moreinfo?id={{this._id}}" style="text-decoration: none;">
+                    <div class="card text-center text-dark" style="width: 18rem;">
+                        <img class="card-img-top" src="/shope-image/{{this._id}}.png" style="height: 300px;"
+                            alt="Card image cap">
+                        <div class="card-body text-dark">
+                            <h5 class="card-title">{{this.proinfo.pname}}</h5>
+                            <p>{{this.proinfo.pprice}} /-</p>
+                            <p>{{this.proinfo.pbrand}}</p>
+                            <p>{{this.proinfo.mnumber}}</p>
+
+                        </div>
+                        </a>
+                       
+                    </div>
+
+              
+
+            </div>
+            {{/each}}
+        </div>
+        {{/if}}
+    </div>
+</div>
