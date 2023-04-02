@@ -159,7 +159,7 @@ module.exports =
                     }
                 }
             ]).toArray()
-            console.log(cart[0].cartList)
+           // console.log(cart[0].cartList)
             resolve(cart[0].cartList)
         })
     },

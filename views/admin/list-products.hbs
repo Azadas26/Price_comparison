@@ -1,0 +1,56 @@
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 p-5">
+                <a href="/admin" class="btn btn-outline-warning mt-5 text-dark" style="width: 100%;">Product
+                    Information...</a>
+            </div>
+            <div class="col-md-6 p-5">
+                <a href="/admin/users" class="btn btn-outline-danger mt-5 text-dark" style="width: 100%;">Users
+                    Information...</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="">
+                    <h1 class="text-center text-primary p-3"><b><i>Poduct Information...</i></b></h1>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">NO.</th>
+                                <th scope="col">Product Name</th>
+                                <th scope="col">Product Type</th>
+                                <th scope="col">Brand</th>
+                                <th scope="col">Model Number</th>
+                                <th scope="col">Waranty (year)</th>
+                                <th scope="col">Product Price</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Delete Products</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each pro}}
+                            <tr>
+
+                                <td>{{@index}}</td>
+                                <td>{{this.proinfo.pname}}</td>
+                                <td>{{this.proinfo.ptype}}</td>
+                                <td>{{this.proinfo.pbrand}}</td>
+                                <td>{{this.proinfo.mnumber}}</td>
+                                <td>{{this.proinfo.wyera}}</td>
+                                <td>{{this.proinfo.pprice}}</td>
+                                <td><img src="/shope-image/{{this._id}}.png" style="width: 200px; height: 200px;"
+                                        alt=""></td>
+                                <td>
+                                    <a href="/admin/delete?id={{this._id}}" class="btn btn-outline-danger mt-5"
+                                        onclick="return confirm('are you shure to delete this product???')">Delete</a>
+                                </td>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

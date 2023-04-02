@@ -112,8 +112,18 @@ router.get('/cart', (req, res) => {
 })
 
 router.get('/intocart', this.fvarfylogin, (req, res) => {
-  userbase.view_carted_products(req.session.fuser._id).then((products) => {
-    res.render('./user/cart-page', { user: true, fuser: req.session.fuser, pro: products })
+  userbase.Cart_count(req.session.fuser._id).then((count)=>
+  {
+     if(count!=0)
+     {
+       userbase.view_carted_products(req.session.fuser._id).then((products) => {
+         res.render('./user/cart-page', { user: true, fuser: req.session.fuser, pro: products })
+       })
+     }
+     else
+     {
+       res.render('./user/cart-page', { user: true, fuser: req.session.fuser})
+     }
   })
 })
 router.get('/removepro', (req, res) => {

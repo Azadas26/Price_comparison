@@ -14,6 +14,7 @@
                                 <th scope="col">Model Number</th>
                                 <th scope="col">Waranty(Year)</th>
                                 <th scope="col">₹ Product Price</th>
+                                <th scope="col">Product Qantity</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Choose Option</th>
                             </tr>
@@ -29,6 +30,18 @@
                                 <td>{{this.proinfo.mnumber}}</td>
                                 <td>{{this.proinfo.wyear}}</td>
                                 <td>{{this.proinfo.pprice}}</td>
+                                <td>
+                                    <div class="pt-5">
+                                        <select name="count" id="cars">
+                                            <option value="">0</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </td>
                                 <td><img src="/shope-image/{{this._id}}.png" style="width: 200px;" height="200px"
                                         alt=""></td>
                                 <td>
