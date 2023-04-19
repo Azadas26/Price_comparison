@@ -40,19 +40,11 @@ router.get('/signup', (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-    // console.log(req.body)
-    shopebase.Do_signup(req.body).then((id) => {
-
-        if (req.files.image) {
-            var image = req.files.image
-            image.mv("public/shope-image/" + id + ".jpg", (err, done) => {
-                if (err) {
-                    console.log(err)
-                }
-            })
-        }
-        res.redirect('/shope/signup')
-    })
+        console.log(req.body);
+      shopebase.Do_Temp_shope_siGnup(req.body).then((data)=>
+      {
+          res.redirect('/shope/signup')
+      })
 
 })
 

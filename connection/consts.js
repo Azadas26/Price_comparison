@@ -5,5 +5,6 @@ module.exports=
     shope_base: "Shope_Base",
     cart_base: "Caer_Base",
     shope_products: "Shope_products",
+    Shope_tep_data:"Shope_temp"
 
 }

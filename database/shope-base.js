@@ -7,6 +7,16 @@ var objectId = require('mongodb').ObjectId
 
 module.exports=
 {
+    Do_Temp_shope_siGnup:(data)=>
+    {
+        return new Promise((resolve,reject)=>
+        {
+            db.get().collection(consts.Shope_tep_data).insertOne(data).then((data)=>
+            {
+                resolve(data)
+            })
+        })
+    },
     Do_signup:(data)=>
     {
         return new Promise(async(resolve,reject)=>

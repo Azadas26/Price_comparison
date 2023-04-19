@@ -68,5 +68,23 @@ module.exports=
                 resolve(data)
             })
         })
+    },
+    Get_temp_shope_data:()=>
+    {
+        return new Promise(async(resolve,reject)=>
+        {
+             var shopeinfo=await db.get().collection(consts.Shope_tep_data).find().toArray()
+             resolve(shopeinfo)
+        })
+    },
+    Remove_shope_User_from_TEmp:(Id)=>
+    {
+        return new Promise(async(resolve,reject)=>
+        {
+            await db.get().collection(consts.Shope_tep_data).removeOne({_id:objectId(Id)}).then((data)=>
+            {
+                resolve(data)
+            })
+        })
     }
 }

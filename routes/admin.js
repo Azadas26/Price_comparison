@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var admindb = require('../database/admin-base')
+var shopedb = require('../database/shope-base');
+const async = require('hbs/lib/async');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -64,6 +66,33 @@ router.get('/cdelete',(req,res)=>
    admindb.Delete_client_user(req.query.id).then((data)=>
    {
       res.redirect('/admin/cusers')
+   })
+})
+
+router.get('/accept',(req,res)=>
+{
+   admindb.Get_temp_shope_data().then((data)=>
+   {
+     res.render('./admin/accept-shope',{admin:true,sp:data})
+   })
+})
+
+router.post('/shopesignup',async(req,res)=>
+{
+  await  shopedb.Do_signup(req.body).then((Id)=>
+    {
+      admindb.Remove_shope_User_from_TEmp(req.query.id).then((da)=>
+      {
+        res.redirect('/admin/accept')
+      })
+    })
+})
+
+router.get('/removerequest',(req,res)=>
+{
+   admindb.Remove_shope_User_from_TEmp(req.query.id).then((data)=>
+   {
+     res.redirect('/admin/accept')
    })
 })
 
