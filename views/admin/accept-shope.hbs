@@ -10,6 +10,7 @@
                         <th scope="col">Shope User ID</th>
                         <th scope="col">Shope Name</th>
                         <th scope="col">Shope Mail address</th>
+                        <th scope="col">Shope Phone Number</th>
                         <th scope="col">Shope Password <b><i>(Encripted)</i></b></th>
                         <th scope="col">Remove/Admit Users</th>
                     </tr>
@@ -21,6 +22,7 @@
                         <td>{{this._id}}</td>
                         <td>{{this.sname}}</td>
                         <td>{{this.semail}}</td>
+                        <td>{{this.ph}}</td>
                         <td>{{this.spassword}} </td>
                         <td>
                             <a href="/admin/removerequest?id={{this._id}}" class="btn btn-outline-danger"
@@ -49,9 +51,14 @@
                                 </div>
                                 <div class="form-group" style="display: none;">
                                     <label for="exampleInputPassword1">Location</label>
-                                    <input type="text" name="slocation" class="form-control" id="exampleInputPassword1" value="{{this.slocation}}">
+                                    <input type="text" name="slocation" class="form-control" id="exampleInputPassword1"
+                                        value="{{this.slocation}}">
                                 </div>
-
+                                <div class="form-group" style="display: none;">
+                                    <label for="exampleInputPassword1">Phone number</label>
+                                    <input type="text" name="ph" class="form-control" id="exampleInputPassword1"
+                                        value="{{this.ph}}">
+                                </div>
 
                                 <button type="submit" class="btn btn-outline-success" style="display: inline;">&#10004
                                     Accept..</button>

@@ -14,6 +14,7 @@ module.exports=
             db.get().collection(consts.Shope_tep_data).insertOne(data).then((data)=>
             {
                 resolve(data)
+                console.log(data);
             })
         })
     },

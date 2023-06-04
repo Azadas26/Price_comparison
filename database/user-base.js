@@ -46,7 +46,8 @@ module.exports =
         return new Promise(async (resolve, reject) => {
             console.log(data.mnumber)
             var pro = await db.get().collection(consts.shope_products).find({ "proinfo.mnumber": data.mnumber }).toArray()
-            // console.log(pro)
+             console.log(pro)
+           //  console.log(max)
             resolve(pro)
         })
     },
@@ -75,7 +76,7 @@ module.exports =
                 shope: pro[0].allinfo[0]
             }
 
-            //console.log(product)
+            console.log(pro)
             resolve(product)
         })
     },

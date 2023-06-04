@@ -1,34 +1,45 @@
-<div>
+<div class="background-image" style="">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 pt-5">
-                <div class="mt-5 pt-5">
-                    <form action="/login" method="post" class="pt-5 p-5">
-                        <h1 class="text-center"><b><i>Enter Into Your Account...</i></b></h1>
-                        {{#if fmessage}}
-                        <h4 class="text-danger"><b><i>{{fmessage}}</i></b></h4>
-                        {{/if}}
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" name="email" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                                else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Password</label>
-                            <input type="password" name="password" class="form-control" id="exampleInputPassword1"
-                                placeholder="Password">
-                        </div>
-                        <div class="form-group text-right">
-                            <a class="" href="/signup">I have no account...</a>
-                        </div>
+            <div class="col-md-12 p-5 mt-5">
+                <div class="pt-5">
+                    <div class="m-auto"
+                        style="width: 60%; box-shadow: rgba(100, 99, 99, 0.25) 0px 54px 55px, rgba(164, 162, 162, 0.12) 0px -12px 30px, rgba(199, 198, 198, 0.12) 0px 4px 6px, rgba(250, 248, 248, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; border-radius: 20px;">
+                        <form action="/login" method="post" class="mt-5 p-5 text-light" style="color: #0c0c0c;">
+                            <h1 style="text-align: center; font-family: serif;"><b><i>Switch Your Account</i></b>
+                            </h1>
+                            <div class="form-group">
+                                {{#if fmessage}}
+                                <p class="mt-2" style="color: red;"><i>{{fmessage}}</i></p>
+                                {{/if}}
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" name="email" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                    anyone
+                                    else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1"
+                                    placeholder="Password">
 
-                        <button type="submit" class="btn btn-outline-warning text-dark"
-                            style="width: 100%;">Submit</button>
-                    </form>
+                            </div>
+                            <div>
+                                <a href="/signup" class="mt-3 text-primary">create your account...</a>
+                            </div>
+                            <div class="">
+                                <button type="submit" class="btn btn-outline-success mt-3"
+                                    style="width: 100%; "><b>Submit</b></button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+
+
+

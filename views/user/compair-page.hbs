@@ -1,64 +1,48 @@
-<div>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12 mt-5 p-5">
-                <div class="mt-5 p-5">
-                    <h1 class="text-center"><b><i>Enter Product Details...</i></b></h1>
-                    <form action="/compair" method="post">
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Product Name</label>
-                            <input type="text" name="pname" class="form-control" id="exampleInputEmail1"
-                                aria-describedby="emailHelp" placeholder="Enter Product Name">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                                else.</small>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Select Products Type : </label>
-                            <select name="ptype" style="width: 100%;">
-                                <option value="tv">TV</option>
-                                <option value="wm">Washing Machine</option>
-                                <option value="ref">Refrigerator</option>
-                                <option value="mo">Microwave Oven</option>
-                                <option value="ac">Air Conditioner</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Model Number</label>
-                            <input type="text" name="mnumber" class="form-control" id="exampleInputPassword1"
-                                placeholder="Eg : IFB-123-FI">
-                        </div>
+<div class="container-fluid">
+    <div class="row p-5">
+        <div class="col-md-12 mt-5 p-5">
+            <div class="mt-5 p-5 m-auto"
+                style="width: 60%; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(243, 242, 242, 0.12) 0px -12px 30px, rgba(240, 239, 239, 0.12) 0px 4px 6px, rgba(243, 238, 238, 0.17) 0px 12px 13px, rgba(248, 244, 244, 0.09) 0px -3px 5px; border-radius: 20px;">
+                <h1 class="text-center text-light"><b><i>Enter Product Details...</i></b></h1>
+                <form action="/compair" method="post" class="text-light">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Product Name(<span><i>Optional</i></span>)</label>
+                        <input type="text" name="pname" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" placeholder="Enter Product Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Model Number</label>
+                        <input type="text" name="mnumber" class="form-control" id="exampleInputPassword1"
+                            placeholder="Eg : IFB-123-FI">
+                    </div>
 
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Submit</button>
-                    </form>
-                </div>
+                    <button type="submit" class="btn btn-primary mt-3" style="width: 100%;">Submit</button>
+                </form>
             </div>
         </div>
-        {{#if pro}}
-        <div class="row">
-            {{#each pro}}
-            <div class="col-md-3 p-5">
+    </div>
+    {{#if pro}}
+    <div class="row">
+        {{#each pro}}
+        <div class="col-md-3 p-5">
 
-                <a href="/moreinfo?id={{this._id}}" style="text-decoration: none;">
-                    <div class="card text-center text-dark" style="width: 18rem;">
-                        <img class="card-img-top" src="/shope-image/{{this._id}}.png" style="height: 300px;"
-                            alt="Card image cap">
-                        <div class="card-body text-dark">
-                            <h5 class="card-title">{{this.proinfo.pname}}</h5>
-                            <p class="bg-warning m-3">{{this.proinfo.pprice}} /-</p>
-                            <p>{{this.proinfo.pbrand}}</p>
-                            <p>{{this.proinfo.mnumber}}</p>
+            <a href="/moreinfo?id={{this._id}}" style="text-decoration: none;">
+                <div class="card text-center  m-auto"
+                    style="background-color: #111; width: 18rem;border-radius: 20px;box-shadow: rgba(250, 248, 248, 0.25) 0px 54px 55px, rgba(210, 209, 209, 0.12) 0px -12px 30px, rgba(145, 143, 143, 0.12) 0px 4px 6px, rgba(77, 76, 76, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+                    <img class="card-img-top p-5" src="/shope-image/{{this._id}}.png"
+                        style="height: 300px; border-radius: 20%;" alt="Card image cap">
+                    <div class="card-body text-light">
+                        <h5 class="card-title">{{this.proinfo.pname}}</h5>
+                        <p class="bg-warning m-3 text-danger"><b>{{this.proinfo.pprice}}</b> /-</p>
+                        <p class="bg-info m-3 text-danger"> Product Warranty :{{this.proinfo.wyear}}</p>
+                        <p>{{this.proinfo.pbrand}}</p>
+                        <p>{{this.proinfo.mnumber}}</p>
 
-                        </div>
-                </a>
-
-            </div>
-
-
-
+                    </div>
+            </a>
 
         </div>
-        {{/each}}
+    {{/each}}
     </div>
     {{/if}}
-</div>
 </div>

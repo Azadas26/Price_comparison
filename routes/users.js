@@ -14,21 +14,17 @@ module.exports.fvarfylogin = (req, res, next) => {
   }
 }
 /* GET users listing. */
-router.get('/', (req, res) => {
-  res.render('./user/intro-page')
-})
 
 
-router.get('/intro', function (req, res, next) {
-  if (req.session.fstatus) {
-    userbase.Cart_count(req.session.fuser._id).then((count) => {
-      res.render('./user/first-page', { user: true, fuser: req.session.fuser, Count: count })
-    })
 
+router.get('/', function (req, res, next) {
+  if (req.session.fuser) {
+    res.render('./user/first-page', { user: true, Count: "0", fuser: req.session.fuser })
   }
   else {
     res.render('./user/first-page', { user: true, Count: "0" })
   }
+
 });
 
 router.get('/signup', (req, res) => {
@@ -57,9 +53,10 @@ router.post('/login', (req, res) => {
   //console.log(req.body)
   userbase.Do_login(req.body).then((state) => {
     if (state.status) {
+      console.log(state);
       req.session.fstatus = true;
       req.session.fuser = state.fuser;
-      res.redirect('/intro')
+      res.redirect('/')
     }
     else {
       req.session.ffaild = true
@@ -84,6 +81,7 @@ router.get('/compair', this.fvarfylogin, (req, res) => {
 router.post('/compair', (req, res) => {
   //console.log(req.body)
   userbase.get_product_info_ptype(req.body).then((pro) => {
+    console.log(pro);
     req.session.pro = pro
     res.redirect('/compair')
   })
@@ -92,12 +90,12 @@ router.post('/compair', (req, res) => {
 router.get('/moreinfo', (req, res) => {
   //console.log(req.query.id)
   userbase.Get_product_and_shope_info(req.query.id).then(async (proinfo) => {
-    await userbase.Cart_count(req.session.fuser._id).then((count) => {
 
 
-      res.render('./user/product&shope', { user: true, fuser: req.session.fuser, proInfo: proinfo, Count: count })
 
-    })
+    res.render('./user/product&shope', { user: true, fuser: req.session.fuser, proInfo: proinfo })
+
+
     //console.log(proinfo)
 
   })
@@ -112,18 +110,15 @@ router.get('/cart', (req, res) => {
 })
 
 router.get('/intocart', this.fvarfylogin, (req, res) => {
-  userbase.Cart_count(req.session.fuser._id).then((count)=>
-  {
-     if(count!=0)
-     {
-       userbase.view_carted_products(req.session.fuser._id).then((products) => {
-         res.render('./user/cart-page', { user: true, fuser: req.session.fuser, pro: products })
-       })
-     }
-     else
-     {
-       res.render('./user/cart-page', { user: true, fuser: req.session.fuser})
-     }
+  userbase.Cart_count(req.session.fuser._id).then((count) => {
+    if (count != 0) {
+      userbase.view_carted_products(req.session.fuser._id).then((products) => {
+        res.render('./user/cart-page', { user: true, fuser: req.session.fuser, pro: products })
+      })
+    }
+    else {
+      res.render('./user/cart-page', { user: true, fuser: req.session.fuser })
+    }
   })
 })
 router.get('/removepro', (req, res) => {

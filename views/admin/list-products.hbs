@@ -25,6 +25,9 @@
                                 <th scope="col">Waranty (year)</th>
                                 <th scope="col">Product Price</th>
                                 <th scope="col">Image</th>
+                                <th scope="col">Shop Name</th>
+                                <th scope="col">Shop Mail Address</th>
+                                <th scope="col">Shop Location</th>
                                 <th scope="col">Delete Products</th>
                             </tr>
                         </thead>
@@ -37,10 +40,13 @@
                                 <td>{{this.proinfo.ptype}}</td>
                                 <td>{{this.proinfo.pbrand}}</td>
                                 <td>{{this.proinfo.mnumber}}</td>
-                                <td>{{this.proinfo.wyera}}</td>
+                                <td>{{this.proinfo.wyear}}</td>
                                 <td>{{this.proinfo.pprice}}</td>
                                 <td><img src="/shope-image/{{this._id}}.png" style="width: 200px; height: 200px;"
                                         alt=""></td>
+                                <td>{{this.shop.sname}}</td>
+                                <td>{{this.shop.semail}}</td>
+                                <td>{{this.shop.slocation}}</td>
                                 <td>
                                     <a href="/admin/delete?id={{this._id}}" class="btn btn-outline-danger mt-5"
                                         onclick="return confirm('are you shure to delete this product???')">Delete</a>

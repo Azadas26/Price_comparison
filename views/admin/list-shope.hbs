@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-6 mt-5">
-                <a href="/admin" class="btn btn-outline-warning mt-5 text-dark" style="width: 100%;">Product
+                <a href="/admin/proinfo" class="btn btn-outline-warning mt-5 text-dark" style="width: 100%;">Product
                     Information...</a>
             </div>
             <div class="col-md-6 mt-5">
@@ -32,7 +32,7 @@
                                 <th scope="col">Shope Name</th>
                                 <th scope="col">Shope Location</th>
                                 <th scope="col">Shope Mail address</th>
-                                <th scope="col">Shope Image</th>
+                               
                                 <th scope="col">Delete Shope user</th>
                             </tr>
                         </thead>
@@ -44,8 +44,7 @@
                                 <td>{{this.sname}}</td>
                                 <td>{{this.slocation}}</td>
                                 <td>{{this.semail}}</td>
-                                <td><img src="/shope-image/{{this._id}}.jpg" style="width: 200px; height: 200px;"
-                                        alt=""></td>
+                            
                                 <td>
                                     <a href="/admin/sdelete?id={{this._id}}" class="btn btn-danger mt-5"
                                         onclick="return confirm('Are you sure to delete this user???')">Delete</a>

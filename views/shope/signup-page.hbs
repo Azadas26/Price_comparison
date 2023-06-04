@@ -1,35 +1,47 @@
-<div>
+
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12 mt-5 p-5">
-                <h1 class="text-center text-primary"><b>Ready To Create New Account...</b></h1>
-                <form accept="/shope/signup" method="post" enctype="multipart/form-data" class="mt-5">
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Shope Name</label>
-                        <input type="text" name="sname" class="form-control" id="exampleInputPassword1"
-                            placeholder="Enter Shope Name">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" name="semail" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp" placeholder="Enter email">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
-                            else.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" name="spassword" class="form-control" id="exampleInputPassword1"
-                            placeholder="Password">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Location</label>
-                        <input type="text" name="slocation" class="form-control" id="exampleInputPassword1"
-                            placeholder="Shope Location">
-                    </div>
+            <div class="col-md-12 p-5 mt-5">
+                <div class="mt-5">
+                    <div class="m-auto"
+                        style="width: 60%; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; border-radius: 20px;">
+                        <form action="/shope/signup" method="post" style="color: #fff;" class=" p-5 text-light">
+                            <h1 style="text-align: center; font-family: serif;"><b><i>Create Your Account...</i></b>
+                            </h1>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Name</label>
+                                <input type="text" name="sname" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Name">
 
-                   
-                    <button type="submit" class="btn btn-success mt-3" style="width: 100%;">Submit</button>
-                </form>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" name="semail" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Enter email">
+                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with
+                                    anyone
+                                    else.</small>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" name="spassword" class="form-control" id="exampleInputPassword1"
+                                    placeholder="Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Location</label>
+                                <input type="text" name="slocation" class="form-control" id="exampleInputPassword1"
+                                    placeholder="Shope Location">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Phone Number</label>
+                                <input type="text" name="ph" class="form-control" id="exampleInputPassword1"
+                                    placeholder="+91 95XXXXXX76">
+                            </div>
+                            <button type="submit" class="btn btn-outline-success mt-3"
+                                style="width: 100%;"><b>Submit</b></button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -16,9 +16,8 @@ module.exports.verfylogin = function (req, res, next) {
 
 /* GET home page. */
 
-router.get('/',(req,res)=>
-{
-     res.render('./shope/first-page')
+router.get('/', (req, res) => {
+    res.render('./shope/first-page')
 })
 
 router.get('/intro', this.verfylogin, function (req, res, next) {
@@ -40,11 +39,10 @@ router.get('/signup', (req, res) => {
 })
 
 router.post('/signup', (req, res) => {
-        console.log(req.body);
-      shopebase.Do_Temp_shope_siGnup(req.body).then((data)=>
-      {
-          res.redirect('/shope/signup')
-      })
+    console.log(req.body);
+    shopebase.Do_Temp_shope_siGnup(req.body).then((data) => {
+        res.redirect('/shope/login')
+    })
 
 })
 
@@ -80,9 +78,10 @@ router.get('/logout', (req, res) => {
 
 router.post('/add', this.verfylogin, (req, res) => {
     var shopeId = req.session.user._id
+    req.body.pprice = parseInt(req.body.pprice)
     //  console.log(shopeId)
     shopebase.ADD_shope_products(req.body, shopeId).then((id) => {
-        if (req.files.pimage) {
+        if (req.files.pimage) { 
             var image = req.files.pimage
             image.mv("public/shope-image/" + id + ".png", (err, donr) => {
                 if (err) {
