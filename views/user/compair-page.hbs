@@ -22,13 +22,13 @@
         </div>
     </div>
     {{#if pro}}
-    <div class="row">
+   
         {{#each pro}}
         <div class="col-md-3 p-5">
 
             <a href="/moreinfo?id={{this._id}}" style="text-decoration: none;">
                 <div class="card text-center  m-auto"
-                    style="background-color: #111; width: 18rem;border-radius: 20px;box-shadow: rgba(250, 248, 248, 0.25) 0px 54px 55px, rgba(210, 209, 209, 0.12) 0px -12px 30px, rgba(145, 143, 143, 0.12) 0px 4px 6px, rgba(77, 76, 76, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+                    style="background-color: #111; width: auto;border-radius: 20px;box-shadow: rgba(250, 248, 248, 0.25) 0px 54px 55px, rgba(210, 209, 209, 0.12) 0px -12px 30px, rgba(145, 143, 143, 0.12) 0px 4px 6px, rgba(77, 76, 76, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
                     <img class="card-img-top p-5" src="/shope-image/{{this._id}}.png"
                         style="height: 300px; border-radius: 20%;" alt="Card image cap">
                     <div class="card-body text-light">
@@ -43,6 +43,6 @@
 
         </div>
     {{/each}}
-    </div>
+    
     {{/if}}
 </div>
