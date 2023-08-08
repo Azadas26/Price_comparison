@@ -137,5 +137,76 @@ module.exports=
                resolve(data)
             })
         })
+    },
+    View_User_Bookied_Products : (shId)=>
+    {
+        return new Promise(async (resolve, reject) => {
+            var info = await db.get().collection(consts.user_books).aggregate([
+                {
+                    $match:
+                    {
+                        ShopId: objectId(shId)
+                    }
+                },
+                {
+                    $project:
+                    {
+                        _id: 1,
+                        UserId: 1,
+                        ProId: 1,
+                        ShopId: 1
+                    }
+                },
+                {
+                    $lookup:
+                    {
+                        from: consts.shope_products,
+                        localField: "ProId",
+                        foreignField: "_id",
+                        as: "pro"
+                    }
+                },
+                {
+                    $project:
+                    {
+                        _id: 1,
+                        UserId: 1,
+                        ProId: 1,
+                        ShopId: 1,
+                        products:
+                        {
+                            $arrayElemAt: ['$pro', 0]
+                        }
+                    }
+                },
+                {
+                    $lookup:
+                    {
+                        from: consts.user_base,
+                        localField: "UserId",
+                        foreignField: "_id",
+                        as: "user"
+                    }
+                },
+                {
+                    $project:
+                    {
+                        _id: 1,
+                        UserId: 1,
+                        ProId: 1,
+                        ShopId: 1,
+                        products: 1,
+                        user:
+                        {
+                            $arrayElemAt: ['$user', 0]
+                        }
+                    }
+                },
+
+            ]).toArray()
+            console.log(info[0]);
+            resolve(info)
+        })
     }
+    
 }

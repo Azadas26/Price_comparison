@@ -80,45 +80,27 @@ router.get('/compair', this.fvarfylogin, (req, res) => {
 
 router.post('/compair', (req, res) => {
   //console.log(req.body)
-  userbase.get_product_info_ptype(req.body).then((pro) => {
+  userbase.get_product_info_ptype(req.body).then(async(pro) => {
     console.log(pro);
     req.session.pro = pro
-    res.redirect('/compair')
+   await userbase.User_Search_history(req.body, req.session.fuser._id).then((data) => {
+
+      res.redirect('/compair')
+    })
   })
 })
 
-router.get('/moreinfo', (req, res) => {
+router.get('/moreinfo', this.fvarfylogin, (req, res) => {
   //console.log(req.query.id)
   userbase.Get_product_and_shope_info(req.query.id).then(async (proinfo) => {
 
 
-
+    console.log(proinfo);
     res.render('./user/product&shope', { user: true, fuser: req.session.fuser, proInfo: proinfo })
 
 
     //console.log(proinfo)
 
-  })
-})
-router.get('/cart', (req, res) => {
-  //console.log(req.query.id)
-  // console.log("Azad Here")
-  userbase.Cart_clicked(req.session.fuser._id, req.query.id).then((data) => {
-    //res.redirect('/compair')
-    res.json({ status: true })
-  })
-})
-
-router.get('/intocart', this.fvarfylogin, (req, res) => {
-  userbase.Cart_count(req.session.fuser._id).then((count) => {
-    if (count != 0) {
-      userbase.view_carted_products(req.session.fuser._id).then((products) => {
-        res.render('./user/cart-page', { user: true, fuser: req.session.fuser, pro: products })
-      })
-    }
-    else {
-      res.render('./user/cart-page', { user: true, fuser: req.session.fuser })
-    }
   })
 })
 router.get('/removepro', (req, res) => {
@@ -127,8 +109,18 @@ router.get('/removepro', (req, res) => {
     res.redirect('/intocart')
   })
 })
-router.get('/buy', (req, res) => {
 
+router.get('/bookpro', this.fvarfylogin, (req, res) => {
+  console.log(req.query);
+  userbase.Place_Book_Products__By_Users(req.session.fuser._id, req.query.proid, req.query.shid).then((info) => {
+    console.log(info);
+    res.redirect('/viewbooks')
+  })
+})
+router.get('/viewbooks', this.fvarfylogin, (req, res) => {
+  userbase.view_User_Books(req.session.fuser._id).then((info) => {
+    res.render('./user/view-orders', { user: true, fuser: req.session.fuser, info })
+  })
 })
 
 module.exports = router;

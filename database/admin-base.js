@@ -15,24 +15,24 @@ module.exports =
                 {
                     $lookup:
                     {
-                        from:consts.shope_base,
-                        localField:'shopid',
-                        foreignField:'_id',
-                        as:'shop'
+                        from: consts.shope_base,
+                        localField: 'shopid',
+                        foreignField: '_id',
+                        as: 'shop'
                     }
                 },
                 {
                     $project:
                     {
-                        proinfo:1,
+                        proinfo: 1,
                         shop:
                         {
-                            $arrayElemAt: ['$shop', 0] 
+                            $arrayElemAt: ['$shop', 0]
                         }
                     }
                 }
             ]).toArray()
-           // console.log(products)
+            // console.log(products)
             resolve(products)
         })
     },
@@ -89,39 +89,69 @@ module.exports =
     },
     remove_corresponting_shope_products: (Id) => {
         return new Promise(async (resolve, reject) => {
-            await db.get().collection(consts.shope_products).removeOne({ shopid:objectId(Id)}).then((data)=>
-            {
+            await db.get().collection(consts.shope_products).removeOne({ shopid: objectId(Id) }).then((data) => {
                 resolve(data)
             })
         })
     },
-    Do_Admin_Login:(info)=>
-    {
-        return new Promise((resolve,reject)=>
-        {
-            db.get().collection(consts.admin_Login).findOne({namd:info.name}).then((username)=>
-            {
+    Do_Admin_Login: (info) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(consts.admin_Login).findOne({ namd: info.name }).then((username) => {
                 console.log(username);
-                if(username)
-                {
-                    if(username.password==info.password)
-                    {
-                        username.status=true
+                if (username) {
+                    if (username.password == info.password) {
+                        username.status = true
                         resolve(username)
                         //console.log("Login successs");
                     }
-                    else
-                    {
+                    else {
                         reject({ adminstatus: false })
-                       // console.log("Login Faild");
+                        // console.log("Login Faild");
                     }
                 }
-                else
-                {
-                    reject({adminstatus:false})
-                   // console.log("Login Faild");
+                else {
+                    reject({ adminstatus: false })
+                    // console.log("Login Faild");
                 }
             })
+        })
+    },
+    View_users_search_History: () => {
+        return new Promise(async (resolve, reject) => {
+            var info = await db.get().collection(consts.search_history).aggregate([
+                {
+                    $project:
+                    {
+                        _id: 1,
+                        data: 1,
+                        userid: 1
+                    }
+                },
+                {
+
+                    $lookup:
+                    {
+                        from: consts.user_base,
+                        localField: "userid",
+                        foreignField: "_id",
+                        as: "user"
+                    }
+
+                },
+                {
+                    $project:
+                    {
+                        _id: 1,
+                        data:1,
+                        user:
+                        {
+                            $arrayElemAt: ['$user', 0]
+                        }
+                    }
+                }
+            ]).toArray()
+            console.log(info);
+            resolve(info)
         })
     }
 }

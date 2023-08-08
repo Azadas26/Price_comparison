@@ -1,5 +1,5 @@
 <div class="container-fluid">
-    <div class="row p-5">
+    <div class="row">
         <div class="col-md-12 mt-5 p-5">
             <div class="mt-5 p-5 m-auto"
                 style="width: 60%; box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(243, 242, 242, 0.12) 0px -12px 30px, rgba(240, 239, 239, 0.12) 0px 4px 6px, rgba(243, 238, 238, 0.17) 0px 12px 13px, rgba(248, 244, 244, 0.09) 0px -3px 5px; border-radius: 20px;">
@@ -21,16 +21,17 @@
             </div>
         </div>
     </div>
-    {{#if pro}}
-   
+
+        {{#if pro}}
+    <div class="row">
         {{#each pro}}
         <div class="col-md-3 p-5">
 
             <a href="/moreinfo?id={{this._id}}" style="text-decoration: none;">
-                <div class="card text-center  m-auto"
-                    style="background-color: #111; width: auto;border-radius: 20px;box-shadow: rgba(250, 248, 248, 0.25) 0px 54px 55px, rgba(210, 209, 209, 0.12) 0px -12px 30px, rgba(145, 143, 143, 0.12) 0px 4px 6px, rgba(77, 76, 76, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
+                <div class="card text-center  m-auto "
+                    style="width: 18rem; background-color: #111;border-radius: 20px;box-shadow: rgba(250, 248, 248, 0.25) 0px 54px 55px, rgba(210, 209, 209, 0.12) 0px -12px 30px, rgba(145, 143, 143, 0.12) 0px 4px 6px, rgba(77, 76, 76, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;">
                     <img class="card-img-top p-5" src="/shope-image/{{this._id}}.png"
-                        style="height: 300px; border-radius: 20%;" alt="Card image cap">
+                        style="height: 300px;width: 300px; border-radius: 20%;" alt="Card image cap">
                     <div class="card-body text-light">
                         <h5 class="card-title">{{this.proinfo.pname}}</h5>
                         <p class="bg-warning m-3 text-danger"><b>{{this.proinfo.pprice}}</b> /-</p>
@@ -39,10 +40,12 @@
                         <p>{{this.proinfo.mnumber}}</p>
 
                     </div>
+                    </div>
             </a>
 
         </div>
-    {{/each}}
-    
-    {{/if}}
+        {{/each}}
+
+    </div>
+        {{/if}}
 </div>

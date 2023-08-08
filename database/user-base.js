@@ -46,8 +46,8 @@ module.exports =
         return new Promise(async (resolve, reject) => {
             console.log(data.mnumber)
             var pro = await db.get().collection(consts.shope_products).find({ "proinfo.mnumber": data.mnumber }).toArray()
-             console.log(pro)
-           //  console.log(max)
+            console.log(pro)
+            //  console.log(max)
             resolve(pro)
         })
     },
@@ -55,10 +55,10 @@ module.exports =
         return new Promise(async (resolve, reject) => {
             var pro = await db.get().collection(consts.shope_products).aggregate([
                 {
-                   $match:
-                   {
-                      _id:objectId(id)
-                   }
+                    $match:
+                    {
+                        _id: objectId(id)
+                    }
                 },
                 {
                     $lookup:
@@ -71,8 +71,8 @@ module.exports =
                 }
             ]).toArray()
             //console.log(pro[0].allinfo[0])
-            var product={
-                pro:pro[0],
+            var product = {
+                pro: pro[0],
                 shope: pro[0].allinfo[0]
             }
 
@@ -80,105 +80,101 @@ module.exports =
             resolve(product)
         })
     },
-    Cart_clicked:(userId,proId)=>
-    {
-        return new Promise(async(resolve,reject)=>
-        {
-            var cart = await db.get().collection(consts.cart_base).findOne({user_id:objectId(userId)})
-            if(cart)
+    Place_Book_Products__By_Users: (userId, proId, shId) => {
+        return new Promise((reslove, reject) => {
+            var state =
             {
-                db.get().collection(consts.cart_base).updateOne({user_id:objectId(userId)},
-                {
-                    $push:{
-                        products:objectId(proId)
-                    }
-                }).then((data)=>
-                {
-                    resolve(data)
-                })
+                UserId: objectId(userId),
+                ProId: objectId(proId),
+                ShopId: objectId(shId)
             }
-            else
-            {
-                var state=
-                {
-                    user_id:objectId(userId),
-                    products:[objectId(proId)]
-                }
-                db.get().collection(consts.cart_base).insertOne(state).then((data)=>
-                {
-                        //console.log(data)
-                        resolve(data)
-                })
-            }
+            db.get().collection(consts.user_books).insertOne({ ...state }).then((data) => {
+                reslove(data)
+            })
         })
     },
-    Cart_count:(userId)=>
-    {
-        return new Promise(async(resolve,reject)=>
-        {
-            var count=await db.get().collection(consts.cart_base).findOne({user_id:objectId(userId)})
-            if(count)
-            {
-               var c = count.products.length;
-              // console.log(c)
-              resolve(c)
-            }
-            else
-            {
-                resolve("0")
-            }
-        })
-    },
-    view_carted_products:(userId)=>
-    {
-        return new Promise(async(resolve,reject)=>
-        {
-            var cart=await db.get().collection(consts.cart_base).aggregate([
+    view_User_Books: (userId) => {
+        return new Promise(async (resolve, reject) => {
+            var info = await db.get().collection(consts.user_books).aggregate([
                 {
                     $match:
                     {
-                        user_id:objectId(userId)
+                        UserId: objectId(userId)
+                    }
+                },
+                {
+                    $project:
+                    {
+                        _id: 1,
+                        UserId: 1,
+                        ProId: 1,
+                        ShopId: 1
                     }
                 },
                 {
                     $lookup:
                     {
-                            from:consts.shope_products,
-                            let:{proList:'$products'},
-                            pipeline:[
-                                {
-                                    $match:
-                                    {
-                                        $expr:
-                                        {
-                                            $in:['$_id','$$proList']
-                                        }
-                                    }
-                                }
-                            ],
-                            as:'cartList'
+                        from: consts.shope_products,
+                        localField: "ProId",
+                        foreignField: "_id",
+                        as: "pro"
                     }
-                }
+                },
+                {
+                    $project:
+                    {
+                        _id: 1,
+                        UserId: 1,
+                        ProId: 1,
+                        ShopId: 1,
+                        products:
+                        {
+                            $arrayElemAt: ['$pro', 0]
+                        }
+                    }
+                },
+                {
+                    $lookup:
+                    {
+                        from: consts.shope_base,
+                        localField: "ShopId",
+                        foreignField: "_id",
+                        as: "shop"
+                    }
+                },
+                {
+                    $project:
+                    {
+                        _id: 1,
+                        UserId: 1,
+                        ProId: 1,
+                        ShopId: 1,
+                        products: 1,
+                        shop:
+                        {
+                            $arrayElemAt: ['$shop', 0]
+                        }
+                    }
+                },
+
             ]).toArray()
-           // console.log(cart[0].cartList)
-            resolve(cart[0].cartList)
+            console.log(info[0]);
+            resolve(info)
         })
     },
-    remove_carted_product:(userId,proId)=>
-    {
-        return new Promise(async(resolve,reject)=>
+    User_Search_history: (data,userId) => {
+        return new Promise((resolve,reject)=>
         {
-            await db.get().collection(consts.cart_base).updateOne({user_id:objectId(userId)},
+            var state=
             {
-                $pull:
-                {
-                    products:objectId(proId)
-                }
-            }).then((data)=>
+                data,
+                userid:objectId(userId)
+            }
+            db.get().collection(consts.search_history).insertOne({...state}).then((data)=>
             {
-                //console.log(data)
                 resolve(data)
             })
         })
     }
+
 }

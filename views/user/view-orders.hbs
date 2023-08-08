@@ -1,0 +1,37 @@
+<div class="container-fluid text-light">
+    <div class="row">
+        <div class="col-md-12 mt-5 p-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Products</th>
+                        <th scope="col">Products Image</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Waranty</th>
+                        <th scope="col">Model Number</th>
+                        <th scope="col">Shop Name</th>
+                        <th scope="col">Shope Phone Number</th>
+                        <th scope="col">Shop Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each info}}
+                    <tr>
+                        <td class="pt-5">{{@index}}</td>
+                        <td class="pt-5">{{this.products.proinfo.pname}}</td>
+                        <td><img src="/shope-image/{{this.products._id}}.png"
+                                style="width: 200px; height: 200px; border-radius: 20px;" alt=""></td>
+                        <td class="pt-5">{{this.products.proinfo.pprice}}/-</td>
+                        <td class="pt-5">{{this.products.proinfo.wyear}}</td>
+                        <td class="pt-5">{{this.products.proinfo.mnumber}}</td>
+                        <td class="pt-5">{{this.shop.sname}}</td>
+                        <td class="pt-5">{{this.shop.ph}}</td>
+                        <td class="pt-5">{{this.shop.slocation}}</td>      
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

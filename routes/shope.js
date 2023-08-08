@@ -118,6 +118,13 @@ router.post('/upedit', (req, res) => {
         res.redirect('/shope/listpro')
     })
 })
+router.get('/userbook',this.verfylogin,(req,res)=>
+{
+    shopebase.View_User_Bookied_Products(req.session.user._id).then((info)=>
+    {
+        res.render('./shope/view-orders', { user: true, fuser: req.session.fuser, info })
+    })
+})
 
 
 module.exports = router;

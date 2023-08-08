@@ -100,5 +100,12 @@ router.get('/removerequest', (req, res) => {
     res.redirect('/admin/accept')
   })
 })
+router.get('/history',verfyadmin,(req,res)=>
+{
+  admindb.View_users_search_History().then((info)=>
+  {
+    res.render('./admin/view-history', { admin: true ,info})
+  })
+})
 
 module.exports = router;

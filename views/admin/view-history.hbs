@@ -1,0 +1,32 @@
+<div class="container-fluid" style="background-color: #ffff;">
+    <div class="row">
+        <div class="col-md-12 mt-5 p-5">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Products<span>(optional)</span></th>
+                        <th scope="col">Model Number</th>
+                        <th scope="col">UserId</th>
+                        <th scope="col">User Name</th>
+                        <th scope="col">User Email</th>
+                        <th scope="col">User Phone Number</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each info}}
+                    <tr>
+                        <td class="pt-5">{{@index}}</td>
+                        <td class="pt-5">{{this.data.pname}}</td>
+                        <td class="pt-5">{{this.data.mnumber}}/-</td>
+                        <td class="pt-5">{{this.user._id}}</td>
+                        <td class="pt-5">{{this.user.name}}</td>
+                        <td class="pt-5">{{this.user.email}}</td>
+                        <td class="pt-5">+91 {{this.user.ph}}</td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

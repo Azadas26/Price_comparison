@@ -5,6 +5,8 @@ module.exports=
     shope_base: "Shope_Base",
     shope_products: "Shope_products",
     Shope_tep_data:"Shope_temp",
-    admin_Login:"admin_login"
+    admin_Login:"admin_login",
+    user_books:"User_Books",
+    search_history:"Search_History"
 
 }
